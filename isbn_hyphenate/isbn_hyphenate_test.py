@@ -26,44 +26,43 @@ class KnownValues(unittest.TestCase):
                     "978-1-59059-356-1",
                   )
 
-    def testHyphenatingKnownValues(self):
+    def test_hyphenating_known_values(self):
         for with_hyphens in self.knownValues:
             without_hyphens = with_hyphens.replace('-', '')
             self.assertEqual(isbn_hyphenate.hyphenate(without_hyphens), with_hyphens)
             
-    def testTryHyphenatingKnownValues(self):
+    def test_try_hyphenating_known_values(self):
         for with_hyphens in self.knownValues:
             without_hyphens = with_hyphens.replace('-', '')
             self.assertEqual(isbn_hyphenate.try_hyphenate(without_hyphens), with_hyphens)
 
 
-class BadInput(unittest.TestCase):                            
-    def testBadCharacters(self):                                          
+class BadInput(unittest.TestCase):
+    def test_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "fghdf hdfjhfgj")
-    def testTryBadCharacters(self):                                          
+    def test_try_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, "fghdf hdfjhfgj")
 
-    def testTooShort(self):                                          
+    def test_too_short(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "12345")
 
-
-    def testUnknownPrefix(self):                                          
+    def test_unknown_prefix(self):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9751402894626")
 
-    def testUnusedPrefix(self):                                          
+    def test_unused_prefix(self):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9786500042626")
 
-    def testUnknownPrefix2(self):                                          
+    def test_unknown_prefix2(self):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9789999999626")
 
-    def testUnusedPrefix2(self):                                          
+    def test_unused_prefix2(self):                                          
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9789927512300")
 
-    def testTryUnknownPrefix(self):                                          
-        isbnUnknown = "9751402894626"
-        self.assertEqual(isbn_hyphenate.try_hyphenate(isbnUnknown), isbnUnknown)
+    def test_try_unknown_prefix(self):                                          
+        isbn_unknown = "9751402894626"
+        self.assertEqual(isbn_hyphenate.try_hyphenate(isbn_unknown), isbn_unknown)
 
-    def testEmptyInput(self):                                          
+    def test_empty_input(self):                                          
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "")
 
 
