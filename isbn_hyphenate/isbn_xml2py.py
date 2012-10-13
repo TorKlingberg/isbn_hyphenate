@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import, print_function, unicode_literals
 import xml.dom.minidom
 import sys
 
@@ -46,9 +47,9 @@ for group in ISBNRangeMessage.getElementsByTagName("RegistrationGroups")[0].getE
 messageSerial = getText(ISBNRangeMessage.getElementsByTagName("MessageSerialNumber")[0])
 messageDate = getText(ISBNRangeMessage.getElementsByTagName("MessageDate")[0])
 
-print '# Generated from RangeMessage.xml with isbn_xml2py.py'
-print '# Available from http://www.isbn-international.org/agency?rmxml=1'
-print '# MessageDate: ' + messageDate
-print '# MessageSerialNumber: ' + messageSerial
-print 'groups_length = ' + repr(groups_length)
-print 'publisher_length = ' + repr(publisher_length)
+print('# Generated from RangeMessage.xml with isbn_xml2py.py')
+print('# Available from http://www.isbn-international.org/agency?rmxml=1')
+print('# MessageDate: ' + messageDate)
+print('# MessageSerialNumber: ' + messageSerial)
+print('groups_length = ' + repr(groups_length))
+print('publisher_length = ' + repr(publisher_length))
