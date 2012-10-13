@@ -25,7 +25,7 @@ def parsePrefixLengthMap(dom):
     return (prefix, lengthMap)
 
 if len(sys.argv) != 2:
-	print "Usage:\n./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py"
+	print >> sys.stderr, "Usage:\n./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py"
 	sys.exit(2)
 
 xmlfile = sys.argv[1]
