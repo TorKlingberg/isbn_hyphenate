@@ -19,7 +19,7 @@ def hyphenate(input_data):
     '1-84356-028-3'
     
     10 or 13 digit ISBN are hyphenated. Hyphens and whitespace in the input
-    is stipped. 
+    is stipped.
     
     This function uses a database of ISBN ranges, so might not work for
     ISBNs in recently allocated ranges.
