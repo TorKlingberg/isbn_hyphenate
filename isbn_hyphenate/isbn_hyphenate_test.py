@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """Unit tests for isbn_hyphenate.py"""
 
+from __future__ import absolute_import, print_function, unicode_literals
 import isbn_hyphenate
 import unittest
 
