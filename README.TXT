@@ -12,7 +12,7 @@ This can mean that the input ISBN is wrong, or it is in a range that is not yet 
 
 To update the prefix list:
 1) Download a new RangeMessage.xml file from http://www.isbn-international.org/agency?rmxml=1
-2) Convert it to Python format: ./isbn_xml2py.py > isbn_lengthmaps.py
+2) Convert it to Python format: ./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py
 
 These alternative Python libraries can also hyphenate:
 * python-stdnum http://pypi.python.org/pypi/python-stdnum
