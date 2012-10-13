@@ -11,7 +11,7 @@ If the correct hyphen positions cannot be determined, an IsbnUnableToHyphenateEr
 This can mean that the input ISBN is wrong, or it is in a range that is not yet in the known list.
 
 To update the prefix list:
-1) Download a new RangeMessage.xml file from ttp://www.isbn-international.org/agency?rmxml=1
+1) Download a new RangeMessage.xml file from http://www.isbn-international.org/agency?rmxml=1
 2) Convert it to Python format: ./isbn_xml2py.py > isbn_lengthmaps.py
 
 These alternative Python libraries can also hyphenate:
