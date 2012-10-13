@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import xml.dom.minidom
+import sys
 
 def getText(startnode):
     rc = ""
@@ -23,7 +24,12 @@ def parsePrefixLengthMap(dom):
         lengthMap.append(range_to_length)
     return (prefix, lengthMap)
 
-dom = xml.dom.minidom.parse('RangeMessage.xml')
+if len(sys.argv) != 2:
+	print "Usage:\n./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py"
+	sys.exit(2)
+
+xmlfile = sys.argv[1]
+dom = xml.dom.minidom.parse(xmlfile)
 
 ISBNRangeMessage = dom.getElementsByTagName("ISBNRangeMessage")[0]
 
