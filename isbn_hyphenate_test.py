@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Unit test for isbn_hyphenate.py"""
+"""Unit tests for isbn_hyphenate.py"""
 
 import isbn_hyphenate
 import unittest
@@ -22,6 +22,7 @@ class KnownValues(unittest.TestCase):
                     "978-1-4028-9462-6",
                     "978-99953-838-2-4",
                     "978-99930-75-89-9",
+                    "978-1-59059-356-1",
                   )
 
     def testHyphenatingKnownValues(self):
