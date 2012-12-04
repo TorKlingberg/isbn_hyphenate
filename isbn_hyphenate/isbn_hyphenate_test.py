@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Unit tests for isbn_hyphenate.py"""
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import absolute_import, print_function
 import isbn_hyphenate
 import unittest
 
@@ -36,12 +36,23 @@ class KnownValues(unittest.TestCase):
             without_hyphens = with_hyphens.replace('-', '')
             self.assertEqual(isbn_hyphenate.try_hyphenate(without_hyphens), with_hyphens)
 
+    def test_hyphenating_known_values_unicode(self):
+        for with_hyphens in self.knownValues:
+            with_hyphens = unicode(with_hyphens)
+            without_hyphens = with_hyphens.replace('-', '')
+            self.assertEqual(isbn_hyphenate.hyphenate(without_hyphens), with_hyphens)
+
 
 class BadInput(unittest.TestCase):
     def test_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "fghdf hdfjhfgj")
+    def test_bad_characters2(self):
+	self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "085131ffff")
     def test_try_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, "fghdf hdfjhfgj")
+
+    def test_try_bad_non_ascii_character(self):
+        self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, u"9971\u260302100")
 
     def test_too_short(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "12345")
