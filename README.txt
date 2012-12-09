@@ -10,6 +10,8 @@ If the ISBN is malformed (wrong length or invalid characters) an IsbnMalformedEr
 If the correct hyphen positions cannot be determined, an IsbnUnableToHyphenateError exception is raised. 
 This can mean that the input ISBN is wrong, or it is in a range that is not yet in the known list.
 
+isbn_hyphenate is compatible with both Python 2 and 3.
+
 To update the prefix list:
 1. Download a new RangeMessage.xml file from http://www.isbn-international.org/agency?rmxml=1
 2. Convert it to Python format: ./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py

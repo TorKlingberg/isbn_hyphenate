@@ -24,8 +24,11 @@ def hyphenate(input_data):
     
     This function uses a database of ISBN ranges, so might not work for
     ISBNs in recently allocated ranges.
+    
+    Compatible with both Python 2 and 3.
     """
 
+    # Convert input to Unicode (only needed in Python 2)
     return_ascii = False
     if sys.version_info < (3,0,0):
         if isinstance(input_data, str):
@@ -90,6 +93,8 @@ def hyphenate(input_data):
     check_digit = without_hyphens[-1:]
     with_hyphens += book_id + '-' + check_digit
 
+    # If this is Python 2, and the input was a non-Unicode string, 
+    # then return an ascii string
     if return_ascii:
         with_hyphens = with_hyphens.encode("ascii")
     
