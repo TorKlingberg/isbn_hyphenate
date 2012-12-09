@@ -3,14 +3,20 @@ import re
 import sys
 from . import isbn_lengthmaps
 
-class IsbnError(Exception): pass
+class IsbnError(Exception): 
+    """Base class for exceptions thrown by hyphenate and try_hyphenate."""
+    pass
 
-# ISBN is malformed, such as too short, too long or contains invalid characters
-class IsbnMalformedError(IsbnError): pass
 
-# Unable to hyphenate is ISBN. Either it does not exist, or
-# the ranges information used by this library is out of date
-class IsbnUnableToHyphenateError(IsbnError): pass
+class IsbnMalformedError(IsbnError): 
+    """ISBN is malformed, such as too short, too long or 
+    contains invalid characters"""
+    pass
+
+class IsbnUnableToHyphenateError(IsbnError):
+    """Unable to hyphenate is ISBN. Either it does not exist, or
+    the ranges information used by this library is out of date"""
+    pass
 
 
 def hyphenate(input_data):
@@ -30,7 +36,7 @@ def hyphenate(input_data):
 
     # Convert input to Unicode (only needed in Python 2)
     return_ascii = False
-    if sys.version_info < (3,0,0):
+    if sys.version_info < (3, 0, 0):
         if isinstance(input_data, str):
             input_data = unicode(input_data)
             return_ascii = True
@@ -55,7 +61,8 @@ def hyphenate(input_data):
     first7 = int(without_hyphens[:7])
     group_prefix_length = None
     if GS1_prefix not in isbn_lengthmaps.groups_length:
-        raise IsbnUnableToHyphenateError("GS1 prefix %s not recognized" % GS1_prefix)
+        raise IsbnUnableToHyphenateError("GS1 prefix %s not recognized" % 
+            GS1_prefix)
     for cur_range in isbn_lengthmaps.groups_length[GS1_prefix]:
         if cur_range['min'] <= first7 <= cur_range['max']:
             group_prefix_length = cur_range['length']
@@ -74,14 +81,16 @@ def hyphenate(input_data):
     publisher_length = None
     GS1_and_group = GS1_prefix + '-' + group_prefix
     if GS1_and_group not in isbn_lengthmaps.publisher_length:
-        raise IsbnUnableToHyphenateError("Prefix %s not recognized" % GS1_and_group)
+        raise IsbnUnableToHyphenateError("Prefix %s not recognized" % 
+            GS1_and_group)
     for cur_range in isbn_lengthmaps.publisher_length[GS1_and_group]:
         if cur_range['min'] <= first7 <= cur_range['max']:
             publisher_length = cur_range['length']
             break
 
     if publisher_length is None:
-        raise IsbnUnableToHyphenateError("Not in any recognized publisher range")
+        raise IsbnUnableToHyphenateError(
+            "Not in any recognized publisher range")
     elif publisher_length == 0:
         raise IsbnUnableToHyphenateError("Publisher range is unused")
     
@@ -102,6 +111,10 @@ def hyphenate(input_data):
     
 
 def try_hyphenate(isbn):
+    """Attempts to add hyphens to an International Standard Book Number (ISBN).
+    If not possible, return the input string. Can still throw
+    IsbnMalformedError for malformed input.
+    This is a wrapper for hyphenate."""
     try:
         return hyphenate(isbn)
     except IsbnUnableToHyphenateError:
