@@ -47,7 +47,7 @@ class BadInput(unittest.TestCase):
     def test_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "fghdf hdfjhfgj")
     def test_bad_characters2(self):
-	self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "085131ffff")
+        self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "085131ffff")
     def test_try_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, "fghdf hdfjhfgj")
 
