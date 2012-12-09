@@ -2,8 +2,8 @@ from distutils.core import setup
 
 setup(
     name = 'isbn_hyphenate',
-    packages = ['isbn_hyphenate'],
-    version = '1.0.1',
+    packages = ['isbn_hyphenate', 'isbn_hyphenate.test'],
+    version = '1.0.2',
     description = 'a Python library to add hyphens in the right place to an ISBN (International Standard Book Number)',
     author = 'Tor Klingberg',
     author_email = 'tor.klingberg@gmail.com',
