@@ -1,5 +1,6 @@
 from __future__ import absolute_import, print_function, unicode_literals
 import re
+import sys
 from . import isbn_lengthmaps
 
 class IsbnError(Exception): pass
@@ -25,7 +26,13 @@ def hyphenate(input_data):
     ISBNs in recently allocated ranges.
     """
 
-    without_hyphens = re.sub('[\s-]', '', unicode(input_data))
+    return_ascii = False
+    if sys.version_info < (3,0,0):
+        if isinstance(input_data, str):
+            input_data = unicode(input_data)
+            return_ascii = True
+
+    without_hyphens = re.sub('[\s-]', '', input_data)
     
     if re.search('[^0-9X]', without_hyphens):
         raise IsbnMalformedError("Must only contain digits and/or and X")
@@ -82,6 +89,9 @@ def hyphenate(input_data):
     book_id = without_hyphens[:-1]
     check_digit = without_hyphens[-1:]
     with_hyphens += book_id + '-' + check_digit
+
+    if return_ascii:
+        with_hyphens = with_hyphens.encode("ascii")
     
     return with_hyphens
     

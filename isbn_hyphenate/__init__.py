@@ -1,1 +1,1 @@
-from isbn_hyphenate import *
+from .isbn_hyphenate import *
