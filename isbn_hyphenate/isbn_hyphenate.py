@@ -43,7 +43,8 @@ def hyphenate(input_data):
 
     without_hyphens = re.sub('[\s-]', '', input_data)
     
-    if re.search('[^0-9X]', without_hyphens):
+    # Must be digits, maybe an X at the end
+    if not re.match('^[0-9]+X?$', without_hyphens):
         raise IsbnMalformedError("Must only contain digits and/or and X")
 
     with_hyphens = ''
