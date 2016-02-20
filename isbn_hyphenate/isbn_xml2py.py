@@ -3,6 +3,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 import xml.dom.minidom
 import sys
+import pprint
 
 def get_text(startnode):
     text = ""
@@ -52,7 +53,7 @@ def main():
     print('# Available from http://www.isbn-international.org/agency?rmxml=1')
     print('# MessageDate: ' + message_date)
     print('# MessageSerialNumber: ' + message_serial)
-    print('groups_length = ' + repr(groups_length).replace("u'", "'"))
-    print('publisher_length = ' + repr(publisher_length).replace("u'", "'"))
+    print('groups_length = ' + pprint.pformat(groups_length).replace("u'", "'"))
+    print('publisher_length = ' + pprint.pformat(publisher_length).replace("u'", "'"))
 
 main()
