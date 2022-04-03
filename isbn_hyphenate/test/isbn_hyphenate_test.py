@@ -68,7 +68,7 @@ class BadInput(unittest.TestCase):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9751402894626")
 
     def test_unused_prefix(self):
-        self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9786500042626")
+        self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9786400042628")
 
     def test_unknown_prefix2(self):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9789999999626")
