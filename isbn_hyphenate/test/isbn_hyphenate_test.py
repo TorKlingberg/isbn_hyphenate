@@ -83,5 +83,5 @@ class BadInput(unittest.TestCase):
     def test_empty_input(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "")
 
-
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
