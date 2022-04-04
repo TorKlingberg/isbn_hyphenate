@@ -50,7 +50,7 @@ def main():
     message_date = get_text(ISBN_range_message.getElementsByTagName("MessageDate")[0])
 
     print('# Generated from RangeMessage.xml with isbn_xml2py.py')
-    print('# Available from http://www.isbn-international.org/agency?rmxml=1')
+    print('# Available from https://www.isbn-international.org/range_file_generation')
     print('# MessageDate: ' + message_date)
     print('# MessageSerialNumber: ' + message_serial)
     print('groups_length = ' + pprint.pformat(groups_length).replace("u'", "'"))
