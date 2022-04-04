@@ -1,7 +1,7 @@
 # Generated from RangeMessage.xml with isbn_xml2py.py
 # Available from https://www.isbn-international.org/range_file_generation
-# MessageDate: Fri, 1 Apr 2022 01:01:34 BST
-# MessageSerialNumber: 4b111fb2-2ad3-42ac-aeab-104f0ad93812
+# MessageDate: Mon, 4 Apr 2022 03:36:46 BST
+# MessageSerialNumber: 35597e25-cbc5-4472-aeb1-435916d473f2
 groups_length = {'978': [{'length': 1, 'max': 5999999, 'min': 0},
          {'length': 3, 'max': 6499999, 'min': 6000000},
          {'length': 2, 'max': 6599999, 'min': 6500000},

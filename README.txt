@@ -15,7 +15,7 @@ isbn_hyphenate is compatible with both Python 2 and 3.
 To update the prefix list:
  1. Download a new RangeMessage.xml file from https://www.isbn-international.org/range_file_generation
     or, from the command line:
-      wget https://www.isbn-international.org/export_rangemessage.xml -O RangeMessage.xml
+      wget -O RangeMessage.xml https://www.isbn-international.org/export_rangemessage.xml
  2. Convert it to Python format: ./isbn_xml2py.py RangeMessage.xml > isbn_lengthmaps.py
 
 These alternative Python libraries can also hyphenate:
