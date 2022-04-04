@@ -5,9 +5,9 @@ isbn_hyphenate is a Python library to add hyphens in the right place to an ISBN 
 
 Most libraries for handling ISBNs can not do hyphenation because it requires using a list of prefixes, available from the International ISBN Agency.
 
-isbn_hyphenate can handle both 10 and 13 digit ISBNs, and will keep the number of digits. 
-If the ISBN is malformed (wrong length or invalid characters) an IsbnMalformedError exception is raised. 
-If the correct hyphen positions cannot be determined, an IsbnUnableToHyphenateError exception is raised. 
+isbn_hyphenate can handle both 10 and 13 digit ISBNs, and will keep the number of digits.
+If the ISBN is malformed (wrong length or invalid characters) an IsbnMalformedError exception is raised.
+If the correct hyphen positions cannot be determined, an IsbnUnableToHyphenateError exception is raised.
 This can mean that the input ISBN is wrong, or it is in a range that is not yet in the known list.
 
 isbn_hyphenate is compatible with both Python 2 and 3.
