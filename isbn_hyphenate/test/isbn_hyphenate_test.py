@@ -26,6 +26,8 @@ class KnownValues(unittest.TestCase):
                     "978-99953-838-2-4",
                     "978-99930-75-89-9",
                     "978-1-59059-356-1",
+                    "968-9084-02-X",
+                    "9953-37-256-X",
                   )
 
     def test_hyphenating_known_values(self):
