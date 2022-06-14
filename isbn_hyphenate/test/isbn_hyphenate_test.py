@@ -6,6 +6,7 @@ import isbn_hyphenate
 import unittest
 import sys
 
+
 class KnownValues(unittest.TestCase):
     knownValues = ( "99921-58-10-7",
                     "9971-5-0210-0",
@@ -49,12 +50,15 @@ class KnownValues(unittest.TestCase):
 class BadInput(unittest.TestCase):
     def test_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "fghdf hdfjhfgj")
+
     def test_bad_characters2(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "085131ffff")
+
     def test_bad_charactersX(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "X604250590")
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "960X250590")
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "96042X0590")
+
     def test_try_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, "fghdf hdfjhfgj")
 
@@ -82,6 +86,7 @@ class BadInput(unittest.TestCase):
 
     def test_empty_input(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "")
+
 
 if __name__ == '__main__':
     unittest.main()
