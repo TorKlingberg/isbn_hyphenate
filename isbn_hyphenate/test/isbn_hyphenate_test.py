@@ -6,6 +6,7 @@ import isbn_hyphenate
 import unittest
 import sys
 
+
 class KnownValues(unittest.TestCase):
     knownValues = ( "99921-58-10-7",
                     "9971-5-0210-0",
@@ -25,6 +26,8 @@ class KnownValues(unittest.TestCase):
                     "978-99953-838-2-4",
                     "978-99930-75-89-9",
                     "978-1-59059-356-1",
+                    "968-9084-02-X",
+                    "9953-37-256-X",
                   )
 
     def test_hyphenating_known_values(self):
@@ -49,12 +52,15 @@ class KnownValues(unittest.TestCase):
 class BadInput(unittest.TestCase):
     def test_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "fghdf hdfjhfgj")
+
     def test_bad_characters2(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "085131ffff")
+
     def test_bad_charactersX(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "X604250590")
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "960X250590")
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "96042X0590")
+
     def test_try_bad_characters(self):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.try_hyphenate, "fghdf hdfjhfgj")
 
@@ -68,7 +74,7 @@ class BadInput(unittest.TestCase):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9751402894626")
 
     def test_unused_prefix(self):
-        self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9786500042626")
+        self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9786400042628")
 
     def test_unknown_prefix2(self):
         self.assertRaises(isbn_hyphenate.IsbnUnableToHyphenateError, isbn_hyphenate.hyphenate, "9789999999626")
@@ -84,4 +90,5 @@ class BadInput(unittest.TestCase):
         self.assertRaises(isbn_hyphenate.IsbnMalformedError, isbn_hyphenate.hyphenate, "")
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

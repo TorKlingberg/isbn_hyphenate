@@ -26,7 +26,7 @@ def hyphenate(input_data):
     '1-84356-028-3'
     
     10 or 13 digit ISBN are hyphenated. Hyphens and whitespace in the input
-    is stipped.
+    are stripped.
     
     This function uses a database of ISBN ranges, so might not work for
     ISBNs in recently allocated ranges.
@@ -41,7 +41,7 @@ def hyphenate(input_data):
             input_data = unicode(input_data)
             return_ascii = True
 
-    without_hyphens = re.sub('[\s-]', '', input_data)
+    without_hyphens = re.sub(r'[\s-]', '', input_data)
     
     # Must be digits, maybe an X at the end
     if not re.match('^[0-9]+X?$', without_hyphens):
@@ -78,7 +78,7 @@ def hyphenate(input_data):
     without_hyphens = without_hyphens[group_prefix_length:]
     with_hyphens += group_prefix + '-'
     
-    first7 = int(without_hyphens[:7].ljust(7, '0'))
+    first7 = int(without_hyphens[:7].replace('X', '0').ljust(7, '0'))
     publisher_length = None
     GS1_and_group = GS1_prefix + '-' + group_prefix
     if GS1_and_group not in isbn_lengthmaps.publisher_length:
